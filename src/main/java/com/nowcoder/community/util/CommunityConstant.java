@@ -16,4 +16,24 @@ public interface CommunityConstant {
 
     // 记住账号密码时间
     int REMEMBER_EXPIRED_SECONDS = 3600 * 24 * 100;
+
+    // 实体类型：帖子
+    int ENTITY_TYPE_POST = 1;
+
+    // 实体类型：评论
+    int ENTITY_TYPE_COMMENT = 2;
+
+    // 实体类型：用户
+    int ENTITY_TYPE_USER = 3;
+
+    // topic
+    String TOPIC_COMMENT = "comment";
+    String TOPIC_LIKE = "like";
+    String TOPIC_FOLLOW = "follow";
+    String TOPIC_PUBLISH="publish";
+
+    // 系统用户的ID
+    int SYSTEM_USER_ID = 1;
+
+
 }

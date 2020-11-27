@@ -8,7 +8,11 @@
         id,user_id,entity_type,entity_id,target_id,content,status,create_time
     </sql>
 
-    <select id="selectCommentsByEntity">
+    <sql id="insertFields">
+        user_id,entity_type,entity_id,target_id,content,status,create_time
+    </sql>
+
+    <select id="selectCommentsByEntity" resultType="Comment">
         select <include refid="selectFields"></include>
         from comment
         where status=0
@@ -18,11 +22,23 @@
         limit #{offset}, #{limit}
     </select>
 
-    <select id="selectCountByEntity">
+    <select id="selectCountByEntity" resultType="int">
         select count(id)
         from comment
         where status=0
         and entity_type=#{entityType}
         and entity_id=#{entityId}
     </select>
+
+    <insert id="insertComment" parameterType="Comment">
+        insert into comment(<include refid="insertFields"></include>)
+        values(#{userId},#{entityType},#{entityId},#{targetId},#{content},#{status},#{createTime})
+    </insert>
+
+    <select id="selectComment" resultType="Comment">
+        select <include refid="selectFields"></include>
+        from comment
+        where id=#{id}
+    </select>
+
 </mapper>
